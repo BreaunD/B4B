@@ -1,12 +1,13 @@
-const tokenMint = 'YOUR_TOKEN_MINT_ADDRESS'; // Replace with your token's mint address
-const apiKey = 'YOUR_MORALIS_API_KEY'; // Replace with your Moralis API key
+const tokenAddress = 'FDmk5MKCDKSLwN2dVDUmWPJbwMY2iVodcTxVJJYM';
+const apiKey='4de277169fe44525aa4988c8ead2c291';
 
 async function fetchTokenPrice() {
   try {
-    const response = await fetch(`https://solana-gateway.moralis.io/token/price?network=mainnet&address=${tokenMint}`, {
-      headers: {
-        'accept': 'application/json',
-        'X-API-Key': apiKey
+    const response = await fetch('https://public-api.birdeye.so/defi/price?address=FDmk5MKCDKSLwN2dVDUmWPJbwMY2iVodcTxVJJYMpump', {
+    headers: {
+        'X-API-KEY':  `${apiKey}`,
+         accept: 'application/json',
+        'x-chain': 'solana'
       }
     });
 
@@ -15,7 +16,9 @@ async function fetchTokenPrice() {
     }
 
     const data = await response.json();
-    const price = data.usdPrice.toFixed(5); // Adjust decimal places as needed
+    console.log(data)
+    const price = data.data.value.toFixed(8)  // Adjust decimal places as needed
+    console.log(data);
     document.getElementById('price').textContent = `$${price}`;
   } catch (error) {
     console.error('Error fetching token price:', error);
