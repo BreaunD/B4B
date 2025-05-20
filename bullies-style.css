@@ -7,19 +7,36 @@ body {
   color: #fff;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   height: 100vh;
   text-align: center;
 }
 
 .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* good fallback for small screens */
   padding: 20px;
-  max-width: 600px;
+  gap: 30px;
+  max-width:600px;
+  min-height: 200px
+}
+
+.left-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    text-align: center;
 }
 
 .title {
   font-size: 3rem;
   margin-bottom: 0.5em;
+  flex-grow: 1;
+  min-width: 250px;
+
 }
 
 .coin{
@@ -39,8 +56,10 @@ body {
 
 .button-group {
   display: flex;
+  gap: 15px;
   justify-content: center;
-  gap: 20px;
+  width: 100%;
+ 
 }
 
 .btn {
@@ -73,6 +92,16 @@ body {
   transform: scale(1.05);
 }
 
+.why-bully {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    font-size: 20px;
+   
+    
+}
+
 @keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 #9b66e099;
@@ -97,5 +126,22 @@ body {
         transform: translateY(0);
     }
     
-  }
+}
   
+@media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      align-items: center; /* Optional: centers everything when stacked */
+    }
+  
+    .button-group {
+      margin-top: 20px; /* Give it space from the content above */
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+        margin: 5px;
+    }
+}
