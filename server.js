@@ -1,20 +1,24 @@
+// Load .env file only if it's not already in production
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+} 
+
 const express = require('express'); //switch to ESM next time to use import instead
 const fetch = require('node-fetch');
 const cors = require('cors');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 let cachedPrice = null;
 let lastFetched = 0;
 const CACHE_DURATION = 60 * 1000; // 60 seconds
 
-app.use(cors());
-
 const TOKEN_ADDRESS = 'FDmk5MKCDKSLwN2dVDUmWPJbwMY2iVodcTxVJJYMpump';
-const API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6ImQ3NGFkYjczLTg1Y2UtNGY1Mi04OTUyLTIyNDE0NWU3MTZkYSIsIm9yZ0lkIjoiNDQ4MTgyIiwidXNlcklkIjoiNDYxMTIxIiwidHlwZUlkIjoiZDQ4ZDg4YWItNzAxNS00Y2RkLWExOWEtODMzZjE3OWZiOTMzIiwidHlwZSI6IlBST0pFQ1QiLCJpYXQiOjE3NDc3NjA1MjksImV4cCI6NDkwMzUyMDUyOX0.JYAtTWTR9aBpXPL4gY5WFaWcd4yqRn5lGFei0x20Vbo';
-
+const API_KEY = 'process.env.MORALIS_API_KEY';
 const API_URL = 'https://solana-gateway.moralis.io/token/mainnet/FDmk5MKCDKSLwN2dVDUmWPJbwMY2iVodcTxVJJYMpump/price';
+
+app.use(cors());
 
 //create and call api endpoint
 app.get('/price', async (req, res) => {
@@ -25,7 +29,7 @@ app.get('/price', async (req, res) => {
         if (cachedPrice && (now - lastFetched) < CACHE_DURATION) {
         return res.json({ usdPrice: cachedPrice, source: 'cache' });
         }
-
+        //fetch data
         const response = await fetch(API_URL, {
             headers: {'X-API-KEY':  API_KEY},
         });

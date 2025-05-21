@@ -1,5 +1,5 @@
 const tokenAddress = 'FDmk5MKCDKSLwN2dVDUmWPJbwMY2iVodcTxVJJYM';
-const apiKey='REDACTED';
+const apiKey='';
 
 async function fetchTokenPrice() {
   try {

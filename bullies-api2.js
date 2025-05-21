@@ -1,9 +1,15 @@
 const tokenAddress = 'FDmk5MKCDKSLwN2dVDUmWPJbwMY2iVodcTxVJJYM';
-const apiKey='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6ImQ3NGFkYjczLTg1Y2UtNGY1Mi04OTUyLTIyNDE0NWU3MTZkYSIsIm9yZ0lkIjoiNDQ4MTgyIiwidXNlcklkIjoiNDYxMTIxIiwidHlwZUlkIjoiZDQ4ZDg4YWItNzAxNS00Y2RkLWExOWEtODMzZjE3OWZiOTMzIiwidHlwZSI6IlBST0pFQ1QiLCJpYXQiOjE3NDc3NjA1MjksImV4cCI6NDkwMzUyMDUyOX0.JYAtTWTR9aBpXPL4gY5WFaWcd4yqRn5lGFei0x20Vbo';
+const apiKey='process.env.MORALIS_API_KEY';
+
+//choose url local or cloud server
+const BACKEND_URL = window.location.hostname === 'localhost'
+  ? 'http://localhost:3000'
+  : 'https://https://b4b.onrender.com';
+
 //fetch from backed not api
 async function fetchTokenPrice() {
   try {
-    const response = await fetch('http://localhost:3000/price');
+    const response = await fetch(`${BACKEND_URL}/price`);
 
     if (!response.ok) {
       throw new Error('Network response was not ok');
