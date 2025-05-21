@@ -29,5 +29,5 @@ async function fetchTokenPrice() {
 // Fetch the price initially
 fetchTokenPrice();
 
-// Update the price every 10 seconds
-setInterval(fetchTokenPrice, 10000);
+// Update the price every 60 seconds
+setInterval(fetchTokenPrice, 60000);

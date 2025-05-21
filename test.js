@@ -1,9 +1,9 @@
 const tokenAddress = 'FDmk5MKCDKSLwN2dVDUmWPJbwMY2iVodcTxVJJYM';
 
-fetch(`https://bds-api.birdeye.so/market/token_price?address=${tokenAddress}`, {
+fetch(`https://public-api.birdeye.so/public/price??address=${tokenAddress}`, {
   method: 'GET',
   headers: {
-    'X-API-KEY': 'b0d3259d2b7a4b2ba20c3e5d8e9864f2',
+    'X-API-KEY': '4de277169fe44525aa4988c8ead2c291',
     'Content-Type': 'application/json',
   }
 })
