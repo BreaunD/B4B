@@ -4,7 +4,7 @@ const apiKey='process.env.MORALIS_API_KEY';
 //choose url local or cloud server
 const BACKEND_URL = window.location.hostname === 'localhost'
   ? 'http://localhost:3000'
-  : 'https://https://b4b.onrender.com';
+  : 'https://b4b-bfoi.onrender.com';
 
 //fetch from backed not api
 async function fetchTokenPrice() {
