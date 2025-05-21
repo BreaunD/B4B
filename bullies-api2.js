@@ -1,5 +1,5 @@
-const tokenAddress = 'FDmk5MKCDKSLwN2dVDUmWPJbwMY2iVodcTxVJJYM';
-const apiKey='process.env.MORALIS_API_KEY';
+//const tokenAddress = 'FDmk5MKCDKSLwN2dVDUmWPJbwMY2iVodcTxVJJYM';
+//const apiKey = process.env.MORALIS_API_KEY;
 
 //choose url local or cloud server
 const BACKEND_URL = window.location.hostname === 'localhost'
